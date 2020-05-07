@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdexcept>
 #include "TreeNode.h"
+#include "Student.h"
 using namespace std;
 
 template <class X>
@@ -20,7 +21,7 @@ class BST{
 
     TreeNode<X>* getSuccessor(TreeNode<X> *d);
     void printTree(TreeNode<X> *node);
-  private:
+
     TreeNode<X> *root;
 };
 
@@ -38,7 +39,8 @@ void BST<X>::printTree(TreeNode<X> *node){
   if(node == NULL)
     return;
   printTree(node->left);
-  cout << node->key << endl;
+  node->value.printInfo();
+  //cout << node.printInfo() << endl;
   printTree(node->right);
 }
 
