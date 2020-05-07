@@ -14,6 +14,7 @@ public:
 
   void addStudent(Student student);
   void printStudents();
-
+  void addFaculty(Faculty faculty);
+  void printFaculty();
 
 };

@@ -15,3 +15,10 @@ void DataBase::addStudent(Student student){
 void DataBase::printStudents(){
   masterStudent.printTree(masterStudent.root);
 }
+
+void DataBase::addFaculty(Faculty faculty){
+  masterFaculty.insert(faculty.facultyID, faculty);
+}
+void DataBase::printFaculty(){
+  masterFaculty.printTree(masterFaculty.root);
+}

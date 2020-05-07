@@ -9,8 +9,10 @@ using namespace std;
 class Faculty{
   public:
     Faculty();
-    Faculty(int facultyID, string name, string level, string department);
+    Faculty(int facultyID1, string name1, string level1, string department1);
     ~Faculty();
+
+    void printInfo();
 
     DoublyLinkedList<int> advisersStudentIDs;
 

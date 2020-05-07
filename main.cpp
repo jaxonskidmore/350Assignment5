@@ -18,11 +18,13 @@ int main(int argc, char** argv) {
 
   //Student(int studentID, string name, string level, string major, double GPA, int advisor)
   Student connor(2312185, "connor", "sophmore", "data analytics", 3.5, 2);
+
   //connor.printInfo(connor);
 
   DataBase database = DataBase();
   database.addStudent(connor);
   database.printStudents();
+
 
 
 }
