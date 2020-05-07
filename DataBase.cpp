@@ -18,6 +18,9 @@ void DataBase::printStudents(){
 void DataBase::printStudentFromID(int studentID){
   masterStudent.printSingleNode(studentID);
 }
+void DataBase::deleteStudent(int studentID){
+  masterStudent.deleteNode(studentID);
+}
 
 void DataBase::addFaculty(Faculty faculty){
   masterFaculty.insert(faculty.facultyID, faculty);
@@ -27,4 +30,7 @@ void DataBase::printFaculty(){
 }
 void DataBase::printFacultyFromID(int facultyID){
   masterFaculty.printSingleNode(facultyID);
+}
+void DataBase::deleteFaculty(int facultyID){
+  masterFaculty.deleteNode(facultyID);
 }
