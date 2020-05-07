@@ -15,12 +15,15 @@ class BST{
     bool search(int key);
     bool deleteNode(int k);
 
+
     bool isEmpty();
     TreeNode<X>* getMin();
     TreeNode<X>* getMax();
 
     TreeNode<X>* getSuccessor(TreeNode<X> *d);
     void printTree(TreeNode<X> *node);
+
+    void printSingleNode(int key);
 
     TreeNode<X> *root;
 };
@@ -214,4 +217,29 @@ TreeNode<X>* BST<X>::getSuccessor(TreeNode<X> *d) {
     successor->right = d->right;
   }
   return successor;
+}
+
+template <class X>
+void BST<X>::printSingleNode(int key){ //used in database
+  /*if(isEmpty())
+    return NULL;
+  else { */
+    //its not an empty tree
+    TreeNode<X> *current = root;
+
+    while(current->key != key) {
+      try{
+        if(key < current->key)
+          current = current->left;
+        else
+          current = current->right;
+
+        if(current == NULL) //we didnt find value
+          throw 99;
+      }catch(int x){
+        cout << "there is no matching value for that key" << endl;
+      }
+    } //break out while becasuse current.key = key
+      current->value.printInfo();
+
 }

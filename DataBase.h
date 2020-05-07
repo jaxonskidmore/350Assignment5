@@ -14,7 +14,10 @@ public:
 
   void addStudent(Student student);
   void printStudents();
+  void printStudentFromID(int studentID);
   void addFaculty(Faculty faculty);
   void printFaculty();
+  void printFacultyFromID(int facultyID);
+
 
 };
