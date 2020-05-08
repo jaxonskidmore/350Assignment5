@@ -12,6 +12,9 @@ Faculty::Faculty(int facultyID1, string name1, string level1, string department1
   name = name1;
   level = level1;
   department = department1;
+  DoublyLinkedList<int> advisersStudentIDs;
+
+
 }
 
 Faculty::~Faculty(){
@@ -23,5 +26,7 @@ void Faculty::printInfo(){
   cout << name << endl;
   cout << level << endl;
   cout << department << endl;
+  DoublyLinkedList<int> advisersStudentIDs;
+
 
 }

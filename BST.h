@@ -25,6 +25,7 @@ class BST{
 
     void printSingleNode(int key);
 
+
     TreeNode<X> *root;
 };
 
@@ -238,6 +239,7 @@ void BST<X>::printSingleNode(int key){ //used in database
           throw 99;
       }catch(int x){
         cout << "there is no matching value for that key" << endl;
+        exit (EXIT_FAILURE);
       }
     } //break out while becasuse current.key = key
       current->value.printInfo();

@@ -12,14 +12,17 @@ public:
   BST<Student> masterStudent;
   BST<Faculty> masterFaculty;
 
-  void addStudent(Student student); //add to this method to ask user for input
+  void addStudent(); //ask user for input and adds to masterStudent
   void printStudents();
   void printStudentFromID(int studentID);
   void deleteStudent(int studentID);
-  void addFaculty(Faculty faculty); //add to this method to ask user for input
+
+  void addFaculty(); //asks user for input and adds to masterFaculty
   void printFaculty();
   void printFacultyFromID(int facultyID);
   void deleteFaculty(int facultyID);
+
+  void printAllFacultyStudents(Faculty faculty);
 
 
 };

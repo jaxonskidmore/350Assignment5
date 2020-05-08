@@ -16,22 +16,23 @@ int main(int argc, char** argv) {
 
   DoublyLinkedList<int> a;
 
+  
   //Student(int studentID, string name, string level, string major, double GPA, int advisor)
   Student connor(2312185, "connor", "sophmore", "data analytics", 3.5, 2);
   Faculty shafer(12345, "shafer", "senior", "astronomy");
   //connor.printInfo(connor);
 
   DataBase database = DataBase();
-  database.addStudent(connor);
+  //database.addStudent();
   database.printStudents();
 
-  database.addFaculty(shafer);
+  database.addFaculty();
   database.printFaculty();
 
-  database.printStudentFromID(2312185);
+  //database.printStudentFromID(2312185);
   database.printFacultyFromID(12345);
 
-  
+
 
 
 
