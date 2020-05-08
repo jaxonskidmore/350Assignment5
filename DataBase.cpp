@@ -1,5 +1,6 @@
 #include <iostream>
 #include "DataBase.h"
+#include <sstream>
 
 using namespace std;
 
@@ -8,27 +9,28 @@ DataBase::DataBase(){
 }
 
 
-void DataBase::addStudent(){
-  int studentID1;
-  string name1;
-  string level1;
-  string major1;
-  double GPA1;
-  int advisor1;
+Student DataBase::addStudent(){
+  int studentID;
+  string name;
+  string level;
+  string major;
+  double GPA;
+  int advisor;
   cout << "enter students ID" << endl;
-  cin >> studentID1;
+  cin >> studentID;
   cout << "enter students name" << endl;
-  cin >> name1;
+  cin >> name;
   cout << "enter students level" << endl;
-  cin >> level1;
+  cin >> level;
   cout << "enter student major" << endl;
-  cin >> major1;
+  cin >> major;
   cout << "enter students GPA" << endl;
-  cin >> GPA1;
+  cin >> GPA;
   cout << "enter students advisor ID" << endl;
-  cin >> advisor1;
-  Student newStudent(studentID1, name1,level1, major1, GPA1, advisor1);
+  cin >> advisor;
+  Student newStudent(studentID, name,level, major, GPA, advisor);
   masterStudent.insert(newStudent.studentID, newStudent);
+  return newStudent;
 }
 
 void DataBase::printStudents(){
@@ -39,9 +41,15 @@ void DataBase::printStudentFromID(int studentID){
 }
 void DataBase::deleteStudent(int studentID){
   masterStudent.deleteNode(studentID);
+  // deleteLineFromStudent(studentID);  //figure this out
+  /*int test = studentID;
+  stringstream ss;
+  ss << test << endl;
+  string test2 = ss.str();
+  deleteLineFromStudent(test2); */
 }
 
-void DataBase::addFaculty(){
+Faculty DataBase::addFaculty(){
   int facultyID;
   string name;
   string level;
@@ -57,6 +65,7 @@ void DataBase::addFaculty(){
   cin >> department;
   Faculty newFaculty(facultyID, name, level, department);
   masterFaculty.insert(newFaculty.facultyID, newFaculty);
+  return newFaculty;
 }
 void DataBase::printFaculty(){
   masterFaculty.printTree(masterFaculty.root);
@@ -75,3 +84,78 @@ void DataBase::deleteFaculty(int facultyID){
     cout << a.removeFront() << endl;
   }
 } */
+
+void DataBase::studentFileWrite(Student student){
+  ofstream myFile;
+  myFile.open("masterStudent.txt", ios::app);
+  myFile << student.studentID << " ";
+  myFile << student.name << " ";
+  myFile << student.level << " ";
+  myFile << student.major << " ";
+  myFile << student.GPA << " ";
+  myFile << student.advisor << '\n';
+}
+void DataBase::facultyFileWrite(Faculty faculty){
+  ofstream myFile;
+  myFile.open("masterFaculty.txt", ios::app);
+  myFile << faculty.facultyID << " ";
+  myFile << faculty.name <<" ";
+  myFile << faculty.level << " ";
+  myFile << faculty.department << 'n';
+}
+
+void DataBase::studentFileRead(){   //reads in file and creates objects
+  ifstream theFile("masterStudent.txt");
+
+  int studentID;
+  string name;
+  string level;
+  string major;
+  double GPA;
+  int advisor;
+
+  while(theFile >> studentID >> name >> level >> major >> GPA >> advisor){
+    Student newStudent(studentID, name,level, major, GPA, advisor);
+    masterStudent.insert(newStudent.studentID, newStudent);
+  }
+}
+void DataBase::facultyFileRead(){
+  ifstream theFile("masterFaculty.txt");
+
+  int facultyID;
+  string name;
+  string level;
+  string department;
+
+  while(theFile >> facultyID >> name >> level >> department){
+    Faculty newFaculty(facultyID, name, level, department);
+    masterFaculty.insert(newFaculty.facultyID, newFaculty);
+  }
+}
+/*
+void DataBase::deleteLineFromStudent(int studentID){
+  ifstream fin;
+  fin.open("masterStudent.txt");
+  ofstream temp;
+  temp.open("temp.txt");
+
+  string line;
+  cout << "test" << endl;
+  int match = 0;
+  while(getline(fin, line)){
+    fin >> match;
+    cout << match;
+    if(match = studentID){
+      cout << "test";
+    }
+  }
+
+  //match = (string)studentID;
+
+
+  temp.close();
+  fin.close();
+  remove("masterStudent.txt");
+  rename("temp.txt", "masterStudent.txt");
+}
+*/
